@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Login Page</title>
     <style>
         body { font-family: Arial, sans-serif; text-align: center; padding: 50px; }
         .hidden { display: none; }
@@ -11,7 +11,7 @@
 </head>
 <body>
     <div id="login-form">
-        1>Login</h1>
+        Login here</h1>
         <input type="text" id="username" placeholder="Username" required>
         <input type="password" id="password" placeholder="Password" required>
         <button onclick="login()">Login</button>
@@ -65,7 +65,7 @@
 
             if (username === validUsername && password === validPassword) {
                 document.getElementById('login-form').classList.add('hidden');
-                document.getElementById('secret-content').classList.remove('hidden');
+                document.getElementById('gizli').classList.remove('hidden');
             } else {
                 document.getElementById('error-message').classList.remove('hidden');
             }
