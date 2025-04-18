@@ -57,16 +57,19 @@
     </div>
     <script>
         function login() {
-            document.getElementById('username').value;
+            const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
-            const validUsername = 'Deniz Turer';
-            const validPassword = '40054026';
+            const validUsername = 'Deniz';
+            const validPassword = '1';
 
             if (username === validUsername && password === validPassword) {
                 document.getElementById('login-form').classList.add('hidden');
                 document.getElementById('gizli').classList.remove('hidden');
             } else {
                 document.getElementById('error-message').classList.remove('hidden');
+                setTimeout(() => {
+                    document.getElementById('error-message').classList.add('hidden');
+                }, 3000); // Hide error message after 3 seconds
             }
         }
     </script>
