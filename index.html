@@ -18,7 +18,7 @@
         <input type="text" id="username" placeholder="Username" required>
         <input type="password" id="password" placeholder="Password" required>
         <button onclick="login()">Login</button>
-        <p id="error-message" class="hidden">Invalid credentials!</p>
+        <p class="title" id="error-message" class="hidden"> Tekrar Dene</p>
     </div>
     <div id="gizli" class="hidden">
         <style>
@@ -78,7 +78,7 @@
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
             const validUsername = 'Deniz Turer';
-            const validPassword = '1';
+            const validPassword = '40054026';
 
             if (username === validUsername && password === validPassword) {
                 document.getElementById('login-form').classList.add('hidden');
