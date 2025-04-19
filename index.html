@@ -19,6 +19,9 @@
         <input type="password" id="password" placeholder="Password" required>
         <button onclick="login()">Login</button>
         <p id="error-message" class="hidden"> Tekrar Dene</p>
+        <p id="clue"class="title"> Sifre: En sevdigin rengin hex code'u, 
+            ve goz renginin hex kodu #??????-#??????</p>
+        <p id="clue2" class = "hidden"> 38.43% red, 24.71% green and 22.35% blue</p>
     </div>
     <div id="gizli" class="hidden">
         <style>
@@ -88,20 +91,26 @@
             button.style.left = `${randomX}px`;
             button.style.top = `${randomY}px`;
         }
+        n=0;
         function login() {
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
             const validUsername = 'Deniz Turer';
-            const validPassword = '40054026';
-
+            const validPassword = '#06038D-#623F39';
             if (username === validUsername && password === validPassword) {
                 document.getElementById('login-form').classList.add('hidden');
                 document.getElementById('gizli').classList.remove('hidden');
+                document.getElementById('clue').classList.remove('title').classList.add('hidden');
+                document.getElementById('clue2').classList.remove('title').classList.add('hidden');
             } else {
                 document.getElementById('error-message').classList.remove('hidden').classList.add('title');
                 setTimeout(() => {
                     document.getElementById('error-message').classList.remove('title').classList.add('hidden');
                 }, 3000); // Hide error message after 3 seconds
+                n = n+1;
+                if n==3 {
+                    document.getElementById('clue2').classList.remove('hidden').classList.add('title');
+                }
             }
         }
     </script>
