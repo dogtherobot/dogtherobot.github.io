@@ -64,7 +64,7 @@
                 <p> Sana bir dizi soru hazirladim cevaplar misin lutfen? </p>
             </div>
             <a href= "sorular/soru1.html" class="button">Hazirim canim</a>
-            <button type = "button" onclick="changePosition()" class='annoying button'>Git basimdan</button>
+            <button type = "button" onclick="changePosition();multiply()" class='annoying button'>Git basimdan</button>
 
         </body>   
     </div>
@@ -77,6 +77,12 @@
             const randomY = Math.floor(Math.random() * maxHeight);
             button.style.left = `${randomX}px`;
             button.style.top = `${randomY}px`;
+        }
+        function multiply() {
+            const newButton = document.createElement('button')
+            newButton.innerText = Seni cok seviyorummm;
+            newButton.className = 'button';
+            newButton.onclick = multiply;
         }
         n=0;
         function login() {
