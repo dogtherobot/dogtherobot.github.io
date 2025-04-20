@@ -82,11 +82,13 @@
         function multiply() {
             const buttonSection = document.getElementById('gizli');
             const newButton = document.createElement('button');
-            newButton.innerText = chooseText(['<3', 'Aşkım', 'Canım', 'Güzelim', 'Bebeğim', 'Aşkım benim', 'Sevgilim','Her seyim','Seni cok seviyorum']);
+            newButton.innerText = chooseText(['<3','Aşkım','Güzelim','Bebeğim','Sevgilim','Her seyim','Seni cok seviyorum']);
             newButton.className = 'button';
             newButton.style.position = 'absolute';
-            newButton.style.left = Math.floor(Math.random() * window.innerWidth);
-            newButton.style.top = Math.floor(Math.random() * window.innerHeight);
+            const sectionWidth = buttonSection.clientWidth;
+            const sectionHeight = buttonSection.clientHeight;
+            newButton.style.left = Math.floor(Math.random() * (sectionWidth - 100));
+            newButton.style.top = Math.floor(Math.random() * (sectionHeight - 50));
             buttonSection.appendChild(newButton);
         }
         n=0;
@@ -118,7 +120,7 @@
             }
             return color;
         }
-        function chooseText(array){
+        function chooseText(array) {
             return array[Math.floor(Math.random() * array.length)];
         }
     </script>
