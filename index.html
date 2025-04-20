@@ -61,10 +61,10 @@
         <input type="text" id="username" placeholder="Username" required>
         <input type="password" id="password" placeholder="Password" required>
         <button onclick="login()">Login</button>
-        <p id="error-message" class="hidden"> Tekrar Dene</p>
+        <p id="error-message" class="hidden title"> Tekrar Dene</p>
         <p id="clue" class="title"> Sifre: En sevdigin rengin hex code'u, 
             ve goz renginin hex kodu #??????-#??????</p>
-        <p id="clue2" class = "hidden"> Goz renginin dereceleri 38.43% red, 24.71% green and 22.35% blue</p>
+        <p id="clue2" class = "hidden title"> Goz renginin dereceleri 38.43% red, 24.71% green and 22.35% blue</p>
     </div>
     <div id="gizli" class="hidden">  
         <body>
@@ -105,15 +105,12 @@
                 const n=0;
             } else {
                 document.getElementById('error-message').classList.remove('hidden');
-                document.getElementbyId('error-message').classList.add('title');
-                setTimeout(() => {
-                    document.getElementById('error-message').classList.remove('title');
+                setTimeout(() => {;
                     document.getElementById('error-message').classList.add('hidden');
                 }, 3000); // Hide error message after 3 seconds
                 n = n+1;
                 if (n===3) {
                     document.getElementById('clue2').classList.remove('hidden');
-                    document.getElementById('clue2').classList.add('title');
                 }
             }
         }
