@@ -37,20 +37,8 @@
             border-radius: 12px;
             transition-duration: 0.4s;
         }
-        .annoying button {
-            background-color: #4CAF50; /* Green */
-            border: none;
-            color: white;
-            padding: 15px 32px;
-            text-align: center;
-            text-decoration: none;
+        .annoying {
             position:absolute;
-            display: inline-block;
-            font-size: 16px;
-            margin: 4px 2px;
-            cursor: pointer;
-            border-radius: 12px;
-            transition-duration: 0.4s;
         }
     </style>
 </head>
@@ -76,13 +64,13 @@
                 <p> Sana bir dizi soru hazirladim cevaplar misin lutfen? </p>
             </div>
             <a href= "sorular/soru1.html" class="button">Hazirim canim</a>
-            <button onclick="changePosition()" class='annoying button'>Git basimdan</button>
+            <button type = "button" onclick="changePosition()" class='annoying button'>Git basimdan</button>
 
         </body>   
     </div>
     <script>
         function changePosition() {
-            const button = document.querySelector('.annoying-button');
+            const button = document.querySelector('.annoying.button');
             const maxWidth = window.innerWidth - button.offsetWidth;
             const maxHeight = window.innerHeight - button.offsetHeight;
             const randomX = Math.floor(Math.random() * maxWidth);
