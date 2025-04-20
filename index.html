@@ -124,7 +124,10 @@
             const newHeart = document.createElement('button');
             newHeart.className = 'heart-button';
             newHeart.style.backgroundColor = getRandomColor(); // Set random color
-            newHeart.onclick = addHeartButton; // Allow new button to also add more hearts
+            newHeart.onclick = addHeartButton;
+            newButton.style.position = 'absolute';
+            newButton.style.left = Math.floor(Math.random() * window.innerWidth);
+            newButton.style.top = Math.floor(Math.random() * window.innerHeight); // Allow new button to also add more hearts
             buttonSection.appendChild(newHeart); // Append new button to the body
         }
         n=0;
