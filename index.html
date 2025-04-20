@@ -62,7 +62,7 @@
         <input type="password" id="password" placeholder="Password" required>
         <button onclick="login()">Login</button>
         <p id="error-message" class="hidden"> Tekrar Dene</p>
-        <p id="clue"class="title"> Sifre: En sevdigin rengin hex code'u, 
+        <p id="clue" class="title"> Sifre: En sevdigin rengin hex code'u, 
             ve goz renginin hex kodu #??????-#??????</p>
         <p id="clue2" class = "hidden"> Goz renginin dereceleri 38.43% red, 24.71% green and 22.35% blue</p>
     </div>
@@ -102,17 +102,17 @@
             if (username === validUsername && password === validPassword) {
                 document.getElementById('login-form').classList.add('hidden');
                 document.getElementById('gizli').classList.remove('hidden');
-                document.getElementById('clue').classList.remove('title').classList.add('hidden');
-                document.getElementById('clue2').classList.remove('title').classList.add('hidden');
+                document.getElementById('login-form').getElementById('clue').classList.remove('title').classList.add('hidden');
+                document.getElementById('login-form').getElementById('clue2').classList.remove('title').classList.add('hidden');
                 const n=0;
             } else {
-                document.getElementById('error-message').classList.remove('hidden').classList.add('title');
+                document.getElementById('login-form').getElementById('error-message').classList.remove('hidden').classList.add('title');
                 setTimeout(() => {
-                    document.getElementById('error-message').classList.remove('title').classList.add('hidden');
+                    document.getElementById('login-form').getElementById('error-message').classList.remove('title').classList.add('hidden');
                 }, 3000); // Hide error message after 3 seconds
                 n = n+1;
                 if (n===3) {
-                    document.getElementById('clue2').classList.remove('hidden').classList.add('title');
+                    document.getElementById('login-form').getElementById('clue2').classList.remove('hidden').classList.add('title');
                 }
             }
         }
