@@ -40,6 +40,34 @@
         .annoying {
             position:absolute;
         }
+        .heart-button {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: relative;
+            border: none;
+            border-radius: 50px;
+            transform: rotate(-45deg);
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .heart-button:before,
+        .heart-button:after {
+            content: '';
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            border-radius: 50px;
+            position: absolute;
+        }
+        .heart-button:before {
+            top: -50px;
+            left: 0;
+        }
+        .heart-button:after {
+            left: 50px;
+            top: 0;
+        }
     </style>
 </head>
 <body>
@@ -86,6 +114,14 @@
             newButton.style.position = 'absolute';
             newButton.style.left = Math.floor(Math.random() * window.innerWidth);
             newButton.style.top = Math.floor(Math.random() * window.innerHeight);
+            document.body.appendChild(newButton);
+        }
+        function addHeartButton() {
+            const newHeart = document.createElement('button');
+            newHeart.className = 'heart-button';
+            newHeart.style.backgroundColor = getRandomColor(); // Set random color
+            newHeart.onclick = addHeartButton; // Allow new button to also add more hearts
+            document.body.appendChild(newHeart); // Append new button to the body
         }
         n=0;
         function login() {
@@ -107,6 +143,14 @@
                     document.getElementById('clue2').classList.remove('hidden');
                 }
             }
+        }
+        function getRandomColor() {
+            const letters = '0123456789ABCDEF';
+            let color = '#';
+            for (let i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
         }
     </script>
 </body>
