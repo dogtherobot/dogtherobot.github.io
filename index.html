@@ -81,8 +81,8 @@
     <script>
         function changeLocation() {
             const button = document.querySelector('button');
-            maxWidth = window.innerWidth - button.offsetWidth;
-            maxHeight = window.innerHeight - button.offsetHeight;
+            maxWidth = window.innerWidth - button.maxWidth;
+            maxHeight = window.innerHeight - button.maxHeight;
             randomX = Math.floor(Math.random() * maxWidth);
             randomY = Math.floor(Math.random() * maxHeight);
             button.style.left = `${randomX}px`;
