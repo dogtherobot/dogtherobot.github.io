@@ -114,14 +114,14 @@
             newButton.style.position = 'absolute';
             newButton.style.left = Math.floor(Math.random() * window.innerWidth);
             newButton.style.top = Math.floor(Math.random() * window.innerHeight);
-            document.body.appendChild(newButton);
+            document.body.getElementById('gizli').appendChild(newButton);
         }
         function addHeartButton() {
             const newHeart = document.createElement('button');
             newHeart.className = 'heart-button';
             newHeart.style.backgroundColor = getRandomColor(); // Set random color
             newHeart.onclick = addHeartButton; // Allow new button to also add more hearts
-            document.body.appendChild(newHeart); // Append new button to the body
+            document.body.getElementById('gizli').appendChild(newHeart); // Append new button to the body
         }
         n=0;
         function login() {
