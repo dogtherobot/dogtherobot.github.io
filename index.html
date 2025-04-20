@@ -81,15 +81,17 @@
     <script>
         function changeLocation() {
             const button = document.querySelector('button');
-            const maxWidth = window.innerWidth - button.offsetWidth;
-            const maxHeight = window.innerHeight - button.offsetHeight;
-            const randomX = Math.floor(Math.random() * maxWidth);
-            const randomY = Math.floor(Math.random() * maxHeight);
+            maxWidth = window.innerWidth - button.offsetWidth;
+            maxHeight = window.innerHeight - button.offsetHeight;
+            randomX = Math.floor(Math.random() * maxWidth);
+            randomY = Math.floor(Math.random() * maxHeight);
             button.style.left = `${randomX}px`;
             button.style.right = `${randomX}px`;
             button.style.top = `${randomY}px`;
             button.style.bottom = `${randomY}px`;
             button.style.position = 'absolute';
+            button.offsetLeft = randomX;
+            button.offsetTop = randomY;
         }
         n=0;
         function login() {
