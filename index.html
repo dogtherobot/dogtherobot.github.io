@@ -102,17 +102,18 @@
             if (username === validUsername && password === validPassword) {
                 document.getElementById('login-form').classList.add('hidden');
                 document.getElementById('gizli').classList.remove('hidden');
-                document.getElementById('login-form').getElementById('clue').classList.remove('title').classList.add('hidden');
-                document.getElementById('login-form').getElementById('clue2').classList.remove('title').classList.add('hidden');
                 const n=0;
             } else {
-                document.getElementById('login-form').getElementById('error-message').classList.remove('hidden').classList.add('title');
+                document.getElementById('error-message').classList.remove('hidden');
+                document.getElementbyId('error-message').classList.add('title');
                 setTimeout(() => {
-                    document.getElementById('login-form').getElementById('error-message').classList.remove('title').classList.add('hidden');
+                    document.getElementById('error-message').classList.remove('title');
+                    document.getElementById('error-message').classList.add('hidden');
                 }, 3000); // Hide error message after 3 seconds
                 n = n+1;
                 if (n===3) {
-                    document.getElementById('login-form').getElementById('clue2').classList.remove('hidden').classList.add('title');
+                    document.getElementById('clue2').classList.remove('hidden');
+                    document.getElementById('clue2').classList.add('title');
                 }
             }
         }
