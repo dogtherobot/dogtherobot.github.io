@@ -74,13 +74,13 @@
                 <p> Sana bir dizi soru hazirladim cevaplar misin lutfen? </p>
             </div>
             <a href= "sorular/soru1.html" class="button">Hazirim canim</a>
-            <button onclick=changeLocation() class='annoying button'>Git basimdan</button>
+            <button onclick="changeLocation()" class='annoying button'>Git basimdan</button>
 
         </body>   
     </div>
     <script>
         function changeLocation() {
-            const button = document.querySelector('annoying button');
+            const button = document.querySelector('button');
             const maxWidth = window.innerWidth - button.offsetWidth;
             const maxHeight = window.innerHeight - button.offsetHeight;
             const randomX = Math.floor(Math.random() * maxWidth);
@@ -107,7 +107,7 @@
                     document.getElementById('error-message').classList.add('hidden');
                 }, 3000); // Hide error message after 3 seconds
                 n = n+1;
-                if (n===3) {
+                if (n==2) {
                     document.getElementById('clue2').classList.remove('hidden');
                 }
             }
