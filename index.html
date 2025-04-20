@@ -5,8 +5,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
     <style>
-        body { font-family: Arial, sans-serif; text-align: center; padding: 50px; }
+        body {
+            background-color:black;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+            }
         .hidden { display: none; }
+
+        .title {
+            color: #ffffff;
+            max-width: max-content;
+            margin: auto;
+            }
+        .login-form {
+            color: white
+        }
+        .button {
+            background-color: #4CAF50; /* Green */
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 12px;
+            transition-duration: 0.4s;
+        }
+        .annoying button {
+            background-color: #4CAF50; /* Green */
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            position:absolute;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 12px;
+            transition-duration: 0.4s;
+        }
     </style>
 </head>
 <body>
@@ -23,52 +66,7 @@
             ve goz renginin hex kodu #??????-#??????</p>
         <p id="clue2" class = "hidden"> Goz renginin dereceleri 38.43% red, 24.71% green and 22.35% blue</p>
     </div>
-    <div id="gizli" class="hidden">
-        <style>
-            body {
-                background-color:black;
-                font-family: Arial, sans-serif;
-                text-align: center;
-                padding: 50px;
-            }
-            .title {
-                color: #ffffff;
-                max-width: max-content;
-                margin: auto;
-                }
-            .login-form {
-                color: white
-            }
-            .button {
-                background-color: #4CAF50; /* Green */
-                border: none;
-                color: white;
-                padding: 15px 32px;
-                text-align: center;
-                text-decoration: none;
-                display: inline-block;
-                font-size: 16px;
-                margin: 4px 2px;
-                cursor: pointer;
-                border-radius: 12px;
-                transition-duration: 0.4s;
-            }
-            .annoying button {
-                background-color: #4CAF50; /* Green */
-                border: none;
-                color: white;
-                padding: 15px 32px;
-                text-align: center;
-                text-decoration: none;
-                position:absolute;
-                display: inline-block;
-                font-size: 16px;
-                margin: 4px 2px;
-                cursor: pointer;
-                border-radius: 12px;
-                transition-duration: 0.4s;
-            }
-        </style>     
+    <div id="gizli" class="hidden">  
         <body>
             <div class="title">
                 <h1> Hosgeldin guzeller guzeli askimmm </h1>
@@ -106,13 +104,14 @@
                 document.getElementById('gizli').classList.remove('hidden');
                 document.getElementById('clue').classList.remove('title').classList.add('hidden');
                 document.getElementById('clue2').classList.remove('title').classList.add('hidden');
+                const n=0;
             } else {
                 document.getElementById('error-message').classList.remove('hidden').classList.add('title');
                 setTimeout(() => {
                     document.getElementById('error-message').classList.remove('title').classList.add('hidden');
                 }, 3000); // Hide error message after 3 seconds
                 n = n+1;
-                if (n==3) {
+                if (n===3) {
                     document.getElementById('clue2').classList.remove('hidden').classList.add('title');
                 }
             }
