@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Login Page</title>
     <style>
         body {
@@ -75,22 +76,19 @@
                 <p> Sana bir dizi soru hazirladim cevaplar misin lutfen? </p>
             </div>
             <a href= "sorular/soru1.html" class="button">Hazirim canim</a>
-            <button onclick="mutate()" class='annoying button'>Git basimdan</button>
+            <button onclick="changePosition()" class='annoying button'>Git basimdan</button>
 
         </body>   
     </div>
     <script>
-        function changeLocation() {
-            const button = document.querySelector('button');
-            randomX = Math.floor(Math.random() * window.innerWidth);
-            randomY = Math.floor(Math.random() * window.innerHeight);
+        function changePosition() {
+            const button = document.querySelector('.annoying-button');
+            const maxWidth = window.innerWidth - button.offsetWidth;
+            const maxHeight = window.innerHeight - button.offsetHeight;
+            const randomX = Math.floor(Math.random() * maxWidth);
+            const randomY = Math.floor(Math.random() * maxHeight);
             button.style.left = `${randomX}px`;
-            button.style.right = `${randomX}px`;
             button.style.top = `${randomY}px`;
-            button.style.bottom = `${randomY}px`;
-            button.style.position = 'absolute';
-            button.offsetLeft = randomX;
-            button.offsetTop = randomY;
         }
         function mutate() {
             <button class ="annoying button">seni cok seviyorum</button>;
