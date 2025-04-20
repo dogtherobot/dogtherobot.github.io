@@ -82,7 +82,7 @@
         function multiply() {
             const buttonSection = document.getElementById('gizli');
             const newButton = document.createElement('button');
-            newButton.innerText = "Seni cok seviyorummm";
+            newButton.innerText = chooseText(['<3', 'Aşkım', 'Canım', 'Güzelim', 'Bebeğim', 'Aşkım benim', 'Sevgilim','Her seyim','Seni cok seviyorum']);
             newButton.className = 'button';
             newButton.onclick = multiply();
             newButton.style.position = 'absolute';
@@ -118,6 +118,9 @@
                 color += letters[Math.floor(Math.random() * 16)];
             }
             return color;
+        }
+        function chooseText(array){
+            return array[Math.floor(Math.random() * array.length)];
         }
     </script>
 </body>
