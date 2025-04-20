@@ -92,12 +92,14 @@
                 <p> Sana bir dizi soru hazirladim cevaplar misin lutfen? </p>
             </div>
             <a href= "sorular/soru1.html" class="button">Hazirim canim</a>
-            <button type = "button" onclick="changePosition();multiply();addHeartButton()" class='annoying button'>Git basimdan</button>
+            <button type = "button" onclick="changePosition()" class='annoying button'>Git basimdan</button>
 
         </body>   
     </div>
     <script>
         function changePosition() {
+            multiply();
+            addHeartButton();
             const button = document.querySelector('.annoying.button');
             const maxWidth = window.innerWidth - button.offsetWidth;
             const maxHeight = window.innerHeight - button.offsetHeight;
@@ -107,6 +109,7 @@
             button.style.top = `${randomY}px`;
         }
         function multiply() {
+            const buttonSection = document.getElementById('gizli');
             const newButton = document.createElement('button');
             newButton.innerText = "Seni cok seviyorummm";
             newButton.className = 'button';
@@ -114,14 +117,15 @@
             newButton.style.position = 'absolute';
             newButton.style.left = Math.floor(Math.random() * window.innerWidth);
             newButton.style.top = Math.floor(Math.random() * window.innerHeight);
-            document.body.getElementById('gizli').appendChild(newButton);
+            buttonSection.appendChild(newButton);
         }
         function addHeartButton() {
+            const buttonSection = document.getElementById('gizli');
             const newHeart = document.createElement('button');
             newHeart.className = 'heart-button';
             newHeart.style.backgroundColor = getRandomColor(); // Set random color
             newHeart.onclick = addHeartButton; // Allow new button to also add more hearts
-            document.body.getElementById('gizli').appendChild(newHeart); // Append new button to the body
+            buttonSection.appendChild(newHeart); // Append new button to the body
         }
         n=0;
         function login() {
