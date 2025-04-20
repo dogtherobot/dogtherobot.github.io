@@ -74,7 +74,7 @@
                 <p> Sana bir dizi soru hazirladim cevaplar misin lutfen? </p>
             </div>
             <a href= "sorular/soru1.html" class="button">Hazirim canim</a>
-            <button onclick="changeLocation()" class='annoying button'>Git basimdan</button>
+            <button onclick="mutate()" class='annoying button'>Git basimdan</button>
 
         </body>   
     </div>
@@ -90,6 +90,18 @@
             button.style.position = 'absolute';
             button.offsetLeft = randomX;
             button.offsetTop = randomY;
+        }
+        function mutate() {
+            <button class ="button"> <3 <3 </button>
+            const button = document.querySelector('button');
+            randomX = Math.floor(Math.random() * window.innerWidth);
+            randomY = Math.floor(Math.random() * window.innerHeight);
+            button.style.left = `${randomX}px`;
+            button.style.right = `${randomX}px`;
+            button.style.top = `${randomY}px`;
+            button.style.bottom = `${randomY}px`;
+            button.style.position = 'absolute';
+            
         }
         n=0;
         function login() {
