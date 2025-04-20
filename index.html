@@ -84,8 +84,8 @@
             newButton.className = 'button';
             newButton.onclick = multiply;
             newButton.style.position = 'absolute';
-            newButton.style.left = Math.random() * 100 + 'vw';
-            newButton.style.top = Math.random() * 100 + 'vh';
+            newButton.style.left = Math.floor(Math.random() * window.innerWidth);
+            newButton.style.top = Math.floor(Math.random() * window.innerHeight);
         }
         n=0;
         function login() {
