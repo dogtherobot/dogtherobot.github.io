@@ -85,10 +85,12 @@
             newButton.innerText = chooseText(['<3','Aşkım','Güzelim','Bebeğim','Sevgilim','Her seyim','Seni cok seviyorum']);
             newButton.className = 'button';
             newButton.style.position = 'absolute';
-            const sectionWidth = buttonSection.clientWidth;
-            const sectionHeight = buttonSection.clientHeight;
-            newButton.style.left = Math.floor(Math.random() * (sectionWidth - 100));
-            newButton.style.top = Math.floor(Math.random() * (sectionHeight - 50));
+            const maxWidth = window.innerWidth - newButton.offsetWidth;
+            const maxHeight = window.innerHeight - newButton.offsetHeight;
+            const randomX = Math.floor(Math.random() * maxWidth);
+            const randomY = Math.floor(Math.random() * maxHeight);
+            newButton.style.left = `${randomX}px`;
+            newButton.style.top = `${randomY}px`;
             buttonSection.appendChild(newButton);
         }
         n=0;
