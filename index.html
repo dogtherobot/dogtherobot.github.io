@@ -60,7 +60,7 @@
                 padding: 15px 32px;
                 text-align: center;
                 text-decoration: none;
-                position: absolute;
+                position:absolute;
                 display: inline-block;
                 font-size: 16px;
                 margin: 4px 2px;
@@ -84,15 +84,18 @@
     </div>
     <script>
         function changeLocation() {
-            const button = document.querySelector('button');
+            const button = document.querySelector('annoying button');
             const maxWidth = window.innerWidth - button.offsetWidth;
             const maxHeight = window.innerHeight - button.offsetHeight;
             const randomX = Math.floor(Math.random() * maxWidth);
             const randomY = Math.floor(Math.random() * maxHeight);
             button.style.left = `${randomX}px`;
+            button.style.right = `${randomX}px`;
             button.style.top = `${randomY}px`;
+            button.style.bottom = `${randomY}px`;
+            button.style.position = 'absolute';
         }
-        n=0;
+        const n=0;
         function login() {
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
