@@ -55,8 +55,9 @@
             intervalId = setInterval(function() {
                 const newButton = document.createElement('button');
                 newButton.classList.add('button');
-                newButton.innerText = chooseText(['<3 <3','Bayiliyorum sana','Cok asigim senin aklina','Karimmmmm','Guzeller guzeli sevgilim benimmm','Hayat gayem benim']);
-                newButton.className = 'generated-button';
+                newButton.innerText = chooseText(['<3 <3','Bayiliyorum sana',
+                'Cok asigim senin '+chooseText(['kalbine', 'aklina', 'gozlerine', 'memelerine', 'gotune', 'saclarina', 'dudaklarina','gulumsemene','ruhuna','gamzelerine','kirpiklerine','kaslarina','benlerine','ayaklarina','ellerine','yuruyusune','tavrina','karakterine','konusma uslubuna','sesine']),
+                'Karimmmmm','Guzeller guzeli sevgilim benimmm','Hayat gayem benim']);
                 newButton.style.backgroundColor = getRandomColor();
                 newButton.style.position = 'absolute';
                 const maxWidth = window.innerWidth - newButton.offsetWidth;
@@ -66,7 +67,7 @@
                 newButton.style.left = `${randomX}px`;
                 newButton.style.top = `${randomY}px`;
                 document.getElementById('buttonContainer').appendChild(newButton);
-            }, 1000); // 10000 milliseconds = 10 seconds
+            }, 500); // 10000 milliseconds = 10 seconds
         });
         function getRandomColor() {
             const letters = '0123456789ABCDEF';
