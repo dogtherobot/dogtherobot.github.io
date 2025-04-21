@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sorular</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sorular</title>
 </head>
 <style>
     body {
@@ -14,7 +14,13 @@
         position: relative;
         }
     .hidden { display: none; }
-
+    #hiddenImage {
+        display: none;
+        cursor: pointer;
+        width: 300px;
+        height: auto;
+        margin: 10px;
+    }
     .title {
         color: #ffffff;
         max-width: max-content;
@@ -44,12 +50,32 @@
 <body>
     
 <div class="title">
-    <h1> Beni seviyor musun bebegim? </h1>
-    <p> Lutfen evet de </p>
+    <h1> Tiklayarak bizi bul </h1>
+    <p> Hangisi biziz? </p>
 </div>
-<a href= "sorular/soru2.html" class="button">Evet</a>
-<button class="button" onclick="alert('Hayir demek yok!')">Hayir</button>
+<input type="text" id="numara" placeholder="Numara" required>
+<button onclick="enter()">Enter</button>
+<a href= "sorular/soru3.html" class="button hidden">Dogru bildin simdi tikla</a>
+<img class="hiddenImage" src="sorular\images (2).jpeg" alt="Image 1">
+<img class="hiddenImage" src="sorular\images (3).jpeg" alt="Image 2">
+<img class="hiddenImage" src="sorular\IMG_9376.JPG" alt="Image 3">
+<img class="hiddenImage" src="sorular\images.jpeg" alt="Image 4">
+<img class="hiddenImage" src="sorular\images (1).jpeg" alt="Image 5">
+
 <script>
+    const images = document.querySelectorAll('.hiddenImage');
+    images.forEach(img => {
+        img.onclick = function() {
+            img.style.display = 'block';
+        };
+    });
+    function enter() {
+        const numara = document.getElementById('numara').value;
+        if (numara.toString() == '3') {
+            const button = document.querySelector('.button.hidden');
+            button.classList.remove('hidden');
+        }
+    }
     function changePosition() {
         multiply();
         const button = document.querySelector('.annoying.button');
@@ -75,39 +101,18 @@
         newButton.style.left = `${randomX}px`;
         newButton.style.top = `${randomY}px`;
         buttonSection.appendChild(newButton);
-    }
-    n=0;
-    function login() {
-        const username = document.getElementById('username').value;
-        const password = document.getElementById('password').value;
-        const validUsername = 'Deniz Turer';
-        const validPassword = '#06038D-#623F39';
-        if (username === validUsername && password === validPassword) {
-            document.getElementById('login-form').classList.add('hidden');
-            document.getElementById('gizli').classList.remove('hidden');
-            n=0;
-        } else {
-            document.getElementById('error-message').classList.remove('hidden');
-            setTimeout(() => {;
-                document.getElementById('error-message').classList.add('hidden');
-            }, 3000); // Hide error message after 3 seconds
-            n = n+1;
-            if (n==2) {
-                document.getElementById('clue2').classList.remove('hidden');
-            }
-        }
-    }
+    };
     function getRandomColor() {
         const letters = '0123456789ABCDEF';
         let color = '#';
         for (let i = 0; i < 6; i++) {
             color += letters[Math.floor(Math.random() * 16)];
-        }
+        };
         return color;
-    }
+    };
     function chooseText(array) {
         return array[Math.floor(Math.random() * array.length)];
-    }
+    };
 </script>
 </body>
 </html>
