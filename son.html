@@ -54,9 +54,9 @@
             // Start generating buttons every 10 seconds
             intervalId = setInterval(function() {
                 const newButton = document.createElement('button');
+                newButton.classList.add('button');
                 newButton.innerText = chooseText(['<3 <3','Bayiliyorum sana','Cok asigim senin aklina','Karimmmmm','Guzeller guzeli sevgilim benimmm','Hayat gayem benim']);
                 newButton.className = 'generated-button';
-                newButton.innerText = 'New Button';
                 newButton.style.backgroundColor = getRandomColor();
                 newButton.style.position = 'absolute';
                 const maxWidth = window.innerWidth - newButton.offsetWidth;
