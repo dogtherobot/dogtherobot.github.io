@@ -21,6 +21,10 @@
             background-color: black;
         }
 
+        .title {
+            color:red
+        }
+
         .heart {
             position: relative;
             height: 70px;
@@ -77,7 +81,12 @@
     </style>
 </head>
 <body>
-    <div class="heart active" id="heart">
+    <div class="title">
+        <h1> Suprizi bulduuun!</h1>
+        <p> Aferina askima benimm</p>
+    </div>
+    <div id="heartContainer">
+        <div class="heart active" id="heart"></div>
     </div>
     <script>
         let intervalId;
@@ -91,6 +100,7 @@
             const randomY = Math.floor(Math.random() * maxHeight);
             newHeart.style.left = `${randomX}px`;
             newHeart.style.top = `${randomY}px`;
+            document.getElementById('heartContainer').appendChild(newButton);
         },500);
     </script>
 </body>
