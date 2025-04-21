@@ -14,6 +14,13 @@
         position: relative;
         }
     .hidden { display: none; }
+    .text {
+        color: white;
+        filter:none;
+        width: 200px;
+        height: auto;
+        margin: 10px;
+        }
     .hiddenImage {
         filter: brightness(0);
         color: black;
@@ -64,16 +71,16 @@
 <input type="text" id="numara" placeholder="Numara" required>
 <button onclick="enter()">Enter</button>
 <a href= "sorular/soru3.html" class="hidden button">Dogru bildin simdi tikla</a>
-<img class="hiddenImage" src="images (2).jpeg" alt="Image 1" innerText="1">
-<p class="hidden"> 1</p>
+<img class="hiddenImage" src="images (2).jpeg" alt="Image 1">
+<p class="hidden text"> 1</p>
 <img class="hiddenImage" src="images (3).jpeg" alt="Image 2">
-<p> 2</p>
+<p class="hidden text"> 2 </p>
 <img class="hiddenImage" src="IMG_9376.JPG" alt="Image 3">
-<p> 3</p>
+<p class="hidden text"> 3 </p>
 <img class="hiddenImage" src="images.jpeg" alt="Image 4">
-<p> 4</p>
+<p class="hidden text"> 4 </p>
 <img class="hiddenImage" src="images (1).jpeg" alt="Image 5">
-<p> 5</p>
+<p class="hidden text"> 5 </p>
 
 <script>
     const images = document.querySelectorAll('.hiddenImage');
