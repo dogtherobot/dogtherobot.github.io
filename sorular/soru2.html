@@ -98,8 +98,9 @@
     function enter() {
         const numara = document.getElementById('numara').value;
         if (numara.toString() == '3') {
-            const button = document.querySelector('.button.hidden');
+            const button = document.querySelector('hidden');
             button.classList.remove('hidden');
+            button.classList.add('button');
         }
     }
     function changePosition() {
