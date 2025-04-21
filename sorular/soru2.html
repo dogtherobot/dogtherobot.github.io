@@ -49,7 +49,6 @@
         padding: 15px 32px;
         text-align: center;
         text-decoration: none;
-        display: inline-block;
         font-size: 16px;
         margin: 4px 4px;
         cursor: pointer;
@@ -69,7 +68,7 @@
 <input type="text" id="numara" placeholder="Numara" required>
 <button onclick="enter()">Enter</button>
 <br>
-<a href= "sorular/soru3.html" class="hidden">Dogru bildin simdi tikla</a>
+<a href= "sorular/soru3.html" class="hidden button">Dogru bildin simdi tikla</a>
 <br>
 <img class="hiddenImage" src="images (2).jpeg" alt="Image 1">
 <p class="hidden text"> 1</p>
@@ -95,9 +94,9 @@
     function enter() {
         const numara = document.getElementById('numara').value;
         if (numara.toString() == '3') {
-            const button = document.querySelector('hidden');
+            const button = document.querySelector('.hidden.button');
             button.classList.remove('hidden');
-            button.classList.add('button');
+            button.style.display = 'indline-block';
         }
     }
     function changePosition() {
