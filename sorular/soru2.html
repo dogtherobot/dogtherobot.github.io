@@ -64,8 +64,8 @@
 <input type="text" id="numara" placeholder="Numara" required>
 <button onclick="enter()">Enter</button>
 <a href= "sorular/soru3.html" class="hidden button">Dogru bildin simdi tikla</a>
-<img class="hiddenImage image" src="images (2).jpeg" alt="Image 1">
-<img class="hiddenImage image" src="images (3).jpeg" alt="Image 2">
+<img class="hiddenImage" src="images (2).jpeg" alt="Image 1">
+<img class="hiddenImage" src="images (3).jpeg" alt="Image 2">
 <img class="hiddenImage" src="IMG_9376.JPG" alt="Image 3">
 <img class="hiddenImage" src="images.jpeg" alt="Image 4">
 <img class="hiddenImage" src="images (1).jpeg" alt="Image 5">
@@ -75,6 +75,7 @@
     images.forEach(img => {
         img.onclick = function() {
             img.classList.toggle('hiddenImage');
+            img.classList.toggle('image');
         };
     });
     function enter() {
