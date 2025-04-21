@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+        video {
+            max-width: 100%;
+            height: auto;
+        }
+        .button {
+            background-color: #4CAF50; /* Green */
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 12px;
+            transition-duration: 0.4s;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Video Example</h1>
+    <p>Watch the video below:</p>
+
+    <video controls>
+        <source src="your-video.mp4" type="video/mp4"> <!-- Replace with your video file -->
+        <source src="your-video.webm" type="video/webm"> <!-- Optional: another format -->
+        Your browser does not support the video tag.
+    </video>
+    <button id="startButton">Bas bana</button>
+
+    <div id="buttonContainer"></div>
+
+    <script>
+        let intervalId;
+        document.getElementById('startButton').addEventListener('click', function() {
+            // Clear any existing interval to avoid multiple intervals running
+            clearInterval(intervalId);
+
+            // Start generating buttons every 10 seconds
+            intervalId = setInterval(function() {
+                const newButton = document.createElement('button');
+                newButton.innerText = chooseText(['<3 <3','Bayiliyorum sana','Cok asigim senin aklina','Karimmmmm','Guzeller guzeli sevgilim benimmm','Hayat gayem benim']);
+                newButton.className = 'generated-button';
+                newButton.innerText = 'New Button';
+                newButton.style.backgroundColor = getRandomColor();
+                newButton.style.position = 'absolute';
+                const maxWidth = window.innerWidth - newButton.offsetWidth;
+                const maxHeight = window.innerHeight - newButton.offsetHeight;
+                const randomX = Math.floor(Math.random() * maxWidth);
+                const randomY = Math.floor(Math.random() * maxHeight);
+                newButton.style.left = `${randomX}px`;
+                newButton.style.top = `${randomY}px`;
+                document.getElementById('buttonContainer').appendChild(newButton);
+            }, 10000); // 10000 milliseconds = 10 seconds
+        });
+        function getRandomColor() {
+            const letters = '0123456789ABCDEF';
+            let color = '#';
+            for (let i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+    </script>
+</body>
+</html>
