@@ -15,7 +15,7 @@
         }
     .hidden { display: none; }
     .hiddenImage {
-        display: none;
+        display:contents;
         cursor: pointer;
         width: 300px;
         height: auto;
@@ -62,8 +62,8 @@
 <input type="text" id="numara" placeholder="Numara" required>
 <button onclick="enter()">Enter</button>
 <a href= "sorular/soru3.html" class="hidden button">Dogru bildin simdi tikla</a>
-<img class="hiddenImage" src="sorular\images (2).jpeg" alt="Image 1">
-<img class="hiddenImage" src="sorular\images (3).jpeg" alt="Image 2">
+<img class="hiddenImage image" src="sorular\images (2).jpeg" alt="Image 1">
+<img class="hiddenImage image" src="sorular\images (3).jpeg" alt="Image 2">
 <img class="hiddenImage" src="sorular\IMG_9376.JPG" alt="Image 3">
 <img class="hiddenImage" src="sorular\images.jpeg" alt="Image 4">
 <img class="hiddenImage" src="sorular\images (1).jpeg" alt="Image 5">
@@ -72,7 +72,7 @@
     const images = document.querySelectorAll('.hiddenImage');
     images.forEach(img => {
         img.onclick = function() {
-            img.style.display = 'block';
+            img.classList.toggle('hiddenImage');
         };
     });
     function enter() {
