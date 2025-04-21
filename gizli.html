@@ -18,7 +18,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background-color: #e2e2e2;
+            background-color: black;
         }
 
         .heart {
@@ -80,8 +80,17 @@
     <div class="heart active" id="heart">
     </div>
     <script>
-        document.getElementById('heart').addEventListener('click', function() {
-            this.classList.toggle('active');
-        });
+        let intervalId;
+        intervalId = setInterval(function() {
+            const newHeart = createElement('div');
+            newHeart.classList.add('.heart.active');
+            newHeart.style.position = 'absolute';
+            const maxWidth = window.innerWidth - newHeart.offsetWidth;
+            const maxHeight = window.innerHeight - newHeart.offsetHeight;
+            const randomX = Math.floor(Math.random() * maxWidth);
+            const randomY = Math.floor(Math.random() * maxHeight);
+            newHeart.style.left = `${randomX}px`;
+            newHeart.style.top = `${randomY}px`;
+        },500);
     </script>
 </body>
