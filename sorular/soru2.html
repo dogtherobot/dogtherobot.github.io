@@ -88,6 +88,8 @@
         img.onclick = function() {
             img.classList.toggle('hiddenImage');
             img.classList.toggle('image');
+            const text = img.nextElementSibling;
+            text.classList.toggle('hidden');
         };
     });
     function enter() {
