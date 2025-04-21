@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Login Page</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #e2e2e2;
+        }
+
+        .heart {
+            position: relative;
+            height: 70px;
+            width: 70px;
+            background-color: #fff;
+            transform: rotate(-45deg);
+            border-bottom-left-radius: 100px;
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.15);
+            cursor: pointer;
+            transition: background-color 0.6s;
+        }
+
+        .heart::before,
+        .heart::after {
+            content: '';
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            border-radius: 50px;
+            background-color: #fff;
+        }
+
+        .heart::before {
+            top: -50%;
+            left: 0;
+        }
+
+        .heart::after {
+            top: 0;
+            right: -50%;
+        }
+
+        .circle {
+            position: absolute;
+            height: 55px;
+            width: 55px;
+            left: 7px;
+            top: -28px;
+            border-radius: 50%;
+            z-index: 100;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+            transition: left 0.6s, top 0.6s;
+        }
+
+        .heart.active {
+            background-color: #eb608c;
+        }
+
+        .heart.active .circle {
+            left: 42px;
+            top: 7px;
+        }
+    </style>
+</head>
+<body>
+    <div class="heart" id="heart">
+        <div class="circle"></div>
+    </div>
+    <script>
+        document.getElementById('heart').addEventListener('click', function() {
+            this.classList.toggle('active');
+        });
+    </script>
+</body>
