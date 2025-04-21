@@ -41,10 +41,7 @@
     <script>
         let intervalId;
         document.getElementById('startButton').addEventListener('click', function() {
-            // Clear any existing interval to avoid multiple intervals running
-            clearInterval(intervalId);
 
-            // Start generating buttons every 10 seconds
             intervalId = setInterval(function() {
                 const newButton = document.createElement('button');
                 newButton.classList.add('button');
