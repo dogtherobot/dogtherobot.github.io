@@ -19,14 +19,14 @@
             background-color: #4CAF50; /* Green */
             border: none;
             color: white;
-            padding: 15px 32px;
+            padding: 5 10px;
             text-align: center;
             text-decoration: none;
             display: inline-block;
-            font-size: 16px;
+            font-size: 10px;
             margin: 4px 2px;
             cursor: pointer;
-            border-radius: 12px;
+            border-radius: 3px;
             transition-duration: 0.4s;
         }
     </style>
@@ -66,7 +66,7 @@
                 newButton.style.left = `${randomX}px`;
                 newButton.style.top = `${randomY}px`;
                 document.getElementById('buttonContainer').appendChild(newButton);
-            }, 10000); // 10000 milliseconds = 10 seconds
+            }, 1000); // 10000 milliseconds = 10 seconds
         });
         function getRandomColor() {
             const letters = '0123456789ABCDEF';
