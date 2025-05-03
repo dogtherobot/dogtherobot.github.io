@@ -107,17 +107,11 @@
                 document.getElementById('login-form').classList.add('hidden');
                 document.getElementById('gizli').classList.remove('hidden');
                 n=0;
-            } else if (username === validUsername && password === secretPassword) {
-                document.getElementById('error-message').classList.remove('hidden');
-                setTimeout(() => {;
-                    document.getElementById('error-message').classList.add('hidden');
-                }, 3000); // Hide error message after 3 seconds
-                n = n+1;
-                if (n==1) {
-                    document.getElementById('clue').classList.remove('hidden');
-                }
-            }
-            else {
+            } 
+            else if (username === validUsername && password === secretPassword) {
+                window.location.href = 'scratch_index.html';
+                } 
+                else {
                 document.getElementById('error-message').classList.remove('hidden');
                 setTimeout(() => {;
                     document.getElementById('error-message').classList.add('hidden');
