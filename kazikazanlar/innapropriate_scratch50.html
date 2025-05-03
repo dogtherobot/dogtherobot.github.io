@@ -32,55 +32,52 @@
     width: 120px;
     height: 86px;
   }
-  /* Cropped areas using background-position */
-  .crop1 {
-    background-position: 0 0;
-    background-size: 596px 856px
-  }
-  .crop2 {
-    background-position: -75px -100px;
-    background-size: 3000px 2000px;
-  }
-  .crop3 {
-    background-position: -75px -50px;
-    background-size: 3000px 2000px;
-  }
-  .crop4 {
-    background-position: -100px -75px;
-    background-size: 3000px 2000px;
-  }
-  .crop5 {
-    background-position: 0 0;
-    background-size: 3000px 2000px;
-  }
-  .crop6 {
-    background-position: 0 0;
-    background-size: 3000px 2000px;
+  .cropsize {
+    background-size: 596px 856px;
   }
 </style>
 </head>
 <body>
 
-<div class="scratch-container crop1" data-key="scratch1">
-  <canvas width="120" height="86"></canvas>
-</div>
-<div class="scratch-container crop2" data-key="scratch2">
-  <canvas width="300" height="200"></canvas>
-</div>
-<div class="scratch-container crop3" data-key="scratch3">
-  <canvas width="300" height="200"></canvas>
-</div>
-<div class="scratch-container crop4" data-key="scratch4">
-  <canvas width="300" height="200"></canvas>
-</div>
-<div class="scratch-container crop5" data-key="scratch5">
-  <canvas width="300" height="200"></canvas>
-</div>
-<div class="scratch-container crop6" data-key="scratch6">
-  <canvas width="300" height="200"></canvas>
-</div>
-
 <script>
+  const width = 120;
+  const height = 86;
+  const horCrops = 5;
+  const verCrops = 10;
+  const totalCrops = horCrops * verCrops;
+  const n = 0
+
+  // Dynamically create style element for crop classes
+  const style = document.createElement('style');
+  style.type = 'text/css';
+  let css = '';
+  for (let i = 0; i < horCrops - 1; i++) {
+    const x = -width * i;
+    for (let j = 0; j < verCrops - 1; j++) {
+      const y = -height * j;
+      n++;
+      css += `.crop${n} { background-position: ${x}px ${y}px; background-size: 596px 856px; }\n`;
+    }
+  }
+  style.appendChild(document.createTextNode(css));
+  document.head.appendChild(style);
+
+  // Dynamically create scratch-container divs
+  const body = document.body;
+  for (let n = 0; n < totalCrops; n++) {
+    const div = document.createElement('div');
+    div.className = `scratch-container cropsize crop${n + 1}`;
+    div.setAttribute('data-key', `scratch${n + 1}`);
+
+    const canvas = document.createElement('canvas');
+    canvas.width = width;
+    canvas.height = height;
+    div.appendChild(canvas);
+
+    body.appendChild(div);
+  }
+
+  // Scratch effect code
   const containers = document.querySelectorAll('.scratch-container');
 
   containers.forEach(container => {
