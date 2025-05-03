@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Multiple Scratch Areas with Cropped Image</title>
+<style>
+  body {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    background: #222;
+    margin: 0;
+    padding: 20px;
+  }
+  .scratch-container {
+    position: relative;
+    width: 300px;
+    height: 200px;
+    margin: 10px;
+    background-image: url('81cyh8w3auL._AC_SL1500_.jpg');
+    background-repeat: no-repeat;
+    cursor: pointer;
+    border: 2px solid #555;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 300px;
+    height: 200px;
+  }
+  /* Cropped areas using background-position */
+  .crop1 {
+    background-position: 0 0;
+    background-size: 900px 600px; /* scale image to 3x container size */
+  }
+  .crop2 {
+    background-position: -300px 0;
+    background-size: 900px 600px;
+  }
+  .crop3 {
+    background-position: -600px 0;
+    background-size: 900px 600px;
+  }
+  .crop4 {
+    background-position: 0 -200px;
+    background-size: 900px 600px;
+  }
+  .crop5 {
+    background-position: -300px -200px;
+    background-size: 900px 600px;
+  }
+  .crop6 {
+    background-position: -600px -200px;
+    background-size: 900px 600px;
+  }
+</style>
+</head>
+<body>
+
+<div class="scratch-container crop1" data-key="scratch1">
+  <canvas width="300" height="200"></canvas>
+</div>
+<div class="scratch-container crop2" data-key="scratch2">
+  <canvas width="300" height="200"></canvas>
+</div>
+<div class="scratch-container crop3" data-key="scratch3">
+  <canvas width="300" height="200"></canvas>
+</div>
+<div class="scratch-container crop4" data-key="scratch4">
+  <canvas width="300" height="200"></canvas>
+</div>
+<div class="scratch-container crop5" data-key="scratch5">
+  <canvas width="300" height="200"></canvas>
+</div>
+<div class="scratch-container crop6" data-key="scratch6">
+  <canvas width="300" height="200"></canvas>
+</div>
+
+<script>
+  const containers = document.querySelectorAll('.scratch-container');
+
+  containers.forEach(container => {
+    const canvas = container.querySelector('canvas');
+    const ctx = canvas.getContext('2d');
+    const width = canvas.width;
+    const height = canvas.height;
+
+    // Fill canvas with gray overlay
+    ctx.fillStyle = '#888';
+    ctx.fillRect(0, 0, width, height);
+
+    ctx.globalCompositeOperation = 'destination-out';
+
+    let isDrawing = false;
+
+    const storageKey = container.getAttribute('data-key');
+
+    function saveScratchData() {
+      const imageData = ctx.getImageData(0, 0, width, height);
+      const alphaData = [];
+      for (let i = 3; i < imageData.data.length; i += 4) {
+        alphaData.push(imageData.data[i]);
+      }
+      localStorage.setItem(storageKey, JSON.stringify(alphaData));
+    }
+
+    function loadScratchData() {
+      const data = localStorage.getItem(storageKey);
+      if (!data) return;
+      const alphaData = JSON.parse(data);
+      const imageData = ctx.getImageData(0, 0, width, height);
+      for (let i = 3, j = 0; i < imageData.data.length; i += 4, j++) {
+        imageData.data[i] = alphaData[j];
+      }
+      ctx.putImageData(imageData, 0, 0);
+    }
+
+    function scratch(x, y) {
+      const radius = 20;
+      const grad = ctx.createRadialGradient(x, y, 0, x, y, radius);
+      grad.addColorStop(0, 'rgba(0,0,0,0.6)');
+      grad.addColorStop(1, 'rgba(0,0,0,0)');
+      ctx.fillStyle = grad;
+      ctx.beginPath();
+      ctx.arc(x, y, radius, 0, Math.PI * 2, true);
+      ctx.fill();
+    }
+
+    canvas.addEventListener('mousedown', (e) => {
+      isDrawing = true;
+      const rect = canvas.getBoundingClientRect();
+      scratch(e.clientX - rect.left, e.clientY - rect.top);
+    });
+
+    canvas.addEventListener('mousemove', (e) => {
+      if (!isDrawing) return;
+      const rect = canvas.getBoundingClientRect();
+      scratch(e.clientX - rect.left, e.clientY - rect.top);
+    });
+
+    canvas.addEventListener('mouseup', () => {
+      if (isDrawing) {
+        isDrawing = false;
+        saveScratchData();
+      }
+    });
+
+    canvas.addEventListener('mouseleave', () => {
+      if (isDrawing) {
+        isDrawing = false;
+        saveScratchData();
+      }
+    });
+
+    // Touch events for mobile
+    canvas.addEventListener('touchstart', (e) => {
+      e.preventDefault();
+      isDrawing = true;
+      const rect = canvas.getBoundingClientRect();
+      const touch = e.touches[0];
+      scratch(touch.clientX - rect.left, touch.clientY - rect.top);
+    });
+
+    canvas.addEventListener('touchmove', (e) => {
+      e.preventDefault();
+      if (!isDrawing) return;
+      const rect = canvas.getBoundingClientRect();
+      const touch = e.touches[0];
+      scratch(touch.clientX - rect.left, touch.clientY - rect.top);
+    });
+
+    canvas.addEventListener('touchend', (e) => {
+      e.preventDefault();
+      if (isDrawing) {
+        isDrawing = false;
+        saveScratchData();
+      }
+    });
+
+    loadScratchData();
+  });
+</script>
+
+</body>
+</html>
