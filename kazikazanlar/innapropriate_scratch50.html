@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Kaziyap 50li</title>
+<title>Kaziyap 50li Fixed</title>
 <style>
   body {
     display: flex;
@@ -45,15 +45,15 @@
   const horCrops = 5;
   const verCrops = 10;
   const totalCrops = horCrops * verCrops;
-  const n = 0
+  let n = 0;
 
   // Dynamically create style element for crop classes
   const style = document.createElement('style');
   style.type = 'text/css';
   let css = '';
-  for (let i = 0; i < horCrops - 1; i++) {
+  for (let i = 0; i < horCrops; i++) {
     const x = -width * i;
-    for (let j = 0; j < verCrops - 1; j++) {
+    for (let j = 0; j < verCrops; j++) {
       const y = -height * j;
       n++;
       css += `.crop${n} { background-position: ${x}px ${y}px; background-size: 596px 856px; }\n`;
