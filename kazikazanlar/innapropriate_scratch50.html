@@ -46,7 +46,7 @@
   const verCrops = 10;
   const totalCrops = horCrops * verCrops;
   let n = 0;
-
+  const xy_array = [];
   // Dynamically create style element for crop classes
   const style = document.createElement('style');
   style.type = 'text/css';
@@ -55,6 +55,7 @@
     const x = -width * i;
     for (let j = 0; j < verCrops; j++) {
       const y = -height * j;
+      xy_array.push({ x: x, y: y });
       n++;
       css += `.crop${n} { background-position: ${x}px ${y}px; background-size: 596px 856px; }\n`;
     }
@@ -79,6 +80,71 @@
 
   // Scratch effect code
   const containers = document.querySelectorAll('.scratch-container');
+
+  function getScratchedPercentage(ctx, width, height) {
+    const imageData = ctx.getImageData(0, 0, width, height);
+    let totalPixels = width * height;
+    let scratchedPixels = 0;
+    for (let i = 3; i < imageData.data.length; i += 4) {
+      if (imageData.data[i] < 128) { // alpha less than 128 means scratched
+        scratchedPixels++;
+      }
+    }
+    return (scratchedPixels / totalPixels) * 100;
+  }
+
+  function allScratchedEnough() {
+    for (const container of containers) {
+      const canvas = container.querySelector('canvas');
+      const ctx = canvas.getContext('2d');
+      const scratchedPercent = getScratchedPercentage(ctx, canvas.width, canvas.height);
+      if (scratchedPercent < 50) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  function resetScratches() {
+    containers.forEach(container => {
+      const canvas = container.querySelector('canvas');
+      const ctx = canvas.getContext('2d');
+      ctx.globalCompositeOperation = 'source-over';
+      ctx.fillStyle = '#888';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.globalCompositeOperation = 'destination-out';
+      localStorage.removeItem(container.getAttribute('data-key'));
+    });
+    randomizeArray();
+    randomizeImages();
+  }
+  function randomizeArray() {
+    for (let i = xy_array.length - 1; i > 0; i--) {
+      let j = Math.floor(Math.random() * (i + 1));
+      let k = xy_array[i];
+      xy_array[i] = xy_array[j];
+      xy_array[j] = k;
+    }
+  }
+  function randomizeImages() {
+    containers.forEach((container, index) => {
+      let xy_d = xy_array[index];
+      let x = xy_d.x;
+      let y = xy_d.y;
+      for (let i = 1; i <= totalCrops; i++) {
+        container.classList.remove(`crop${i}`);
+      }
+      container.classList.add(`crop${index + 1}`);
+    });
+    // Update the style element with new background positions
+    let newCss = '';
+    for (let i = 0; i < xy_array.length; i++) {
+      let x = xy_array[i].x;
+      let y = xy_array[i].y;
+      newCss += `.crop${i + 1} { background-position: ${x}px ${y}px; background-size: 596px 856px; }\n`;
+    }
+    style.textContent = newCss;
+  }
 
   containers.forEach(container => {
     const canvas = container.querySelector('canvas');
@@ -143,6 +209,10 @@
       if (isDrawing) {
         isDrawing = false;
         saveScratchData();
+        if (allScratchedEnough()) {
+          resetScratches();
+          randomizeImages();
+        }
       }
     });
 
@@ -150,6 +220,10 @@
       if (isDrawing) {
         isDrawing = false;
         saveScratchData();
+        if (allScratchedEnough()) {
+          resetScratches();
+          randomizeImages();
+        }
       }
     });
 
@@ -175,6 +249,10 @@
       if (isDrawing) {
         isDrawing = false;
         saveScratchData();
+        if (allScratchedEnough()) {
+          resetScratches();
+          randomizeImages();
+        }
       }
     });
 
